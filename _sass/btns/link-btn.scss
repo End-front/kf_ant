@@ -1,0 +1,18 @@
+.link-btn {
+    display: inline-block;
+    text-decoration-skip-ink: none;
+    text-decoration-line: underline;
+    border: 0;
+    color: $color-invert-text;
+    padding: 0;
+    cursor: pointer;
+    @include css-btn-link;
+    &:hover {
+        text-decoration: none;
+    }
+}
+a.link-btn {
+    @include reset-a((
+        "color": $color-invert-text,
+    ));
+}

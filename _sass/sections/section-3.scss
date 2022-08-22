@@ -1,0 +1,110 @@
+.section-3 {
+    position: relative;
+    background:url('../images/decor/wave-support-2-to-top.svg') repeat-x center bottom, linear-gradient(0deg, transparent 0%, transparent 12px, #{$color-bg-accent-2} 12px, #{$color-bg-accent-2} 100%);
+    background-size: 1900px 101px, 100% 100%;
+    margin-bottom: -12px;
+    z-index: 1;
+    &__item {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        position: relative;
+        flex-wrap: wrap;
+        max-width: 600px;
+        margin: 0 auto 20px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+        @include minBreakpointLG {
+            flex-wrap: nowrap;
+            margin-bottom: 0;
+            max-width: none;
+        }
+    }
+    &__text {
+        flex: 1 1 100%;
+        position: relative;
+        z-index: 1;
+        order: 1;
+        @include minBreakpointLG {
+            flex: 0 1 500px;
+            order: 0;
+            margin-left: 10%;
+
+        }
+    }
+    &__img {
+        flex: 1 1 100%;
+        display: flex;
+        justify-content: center;
+        pointer-events: none;
+        @include minBreakpointLG {
+            flex: 1 1 auto;
+            justify-content: flex-end;   
+        }
+        &--desk {
+            display: none;
+            max-width: 115%;
+            @include minBreakpointLG {
+                display: block;
+            }
+        }
+        &--mob {
+            @include minBreakpointLG {
+                display: none;
+            }
+        }
+    }
+
+    &__img + &__text {
+        @include minBreakpointLG {
+            margin-left: 0;
+            margin-right: 10%;
+        }
+    }
+    &__pointer-line {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 0);
+        width: calc(80% - 350px);
+        height: 0;
+        top: 0;
+        z-index: -1;
+        pointer-events: none;
+        display: none;
+        @include minBreakpointLG {
+            display: block;
+        }
+    }
+    &__pointer-line-mob {
+        pointer-events: none;
+        display: block;
+        margin: 0 auto;
+        @include minBreakpointLG {
+            display: none;
+        }
+    }
+
+    // uniqu variation
+    &__item--uniq-1 &__pointer-line-mob {
+        width: (24000%/290);
+        height: auto;
+    }
+    &__item--uniq-1 &__img--mob {
+        max-width: (39300%/290);
+        margin-bottom: -5%;
+    }
+    &__item--uniq-2 &__pointer-line-mob {
+        width: (18900%/290);
+        height: auto;
+        margin-top: 8%;
+    }
+    &__item--uniq-2 &__img--mob {
+        max-width: (37300%/290);
+        margin-bottom: -7%;
+    }
+    &__item--uniq-3 &__img--mob {
+        max-width: (35600%/290);
+        transform: translate(5%, 0);
+    }
+}

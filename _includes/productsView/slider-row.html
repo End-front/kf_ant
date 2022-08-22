@@ -1,0 +1,24 @@
+<div class="products-slider-row">
+    <div class="swiper products-slider-row__swiper">
+        <div class="products-slider-row__wrapper">
+            
+        </div>
+        <div class="swiper-wrapper">
+            {% for item in site.products %} {% if page.url != item.url or include.exclude_current == false | default: true %}    
+                <a href="{{ item.url | relative_url  }}" class="swiper-slide products-slider-row__item {{ item.uniclass }}">
+                    <div class="products-slider-row__text">
+                        <h2 class="h2-mini products-slider-row__title">{{ item.title }}</h2>
+                        <button class="accent-btn">Подробнее</button>
+                        <button class="link-btn">Подробнее →</button>
+                    </div>
+                    <div class="products-slider-row__img">
+                        {% if item.tumbnail %}<img src="{{ item.tumbnail | relative_url }}" alt="tumbnail">{% endif %} 
+                    </div>
+                    <div class="products-slider-row__back"></div>
+                </a>
+            {% endif %} {% endfor %}
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+</div>

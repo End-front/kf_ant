@@ -1,0 +1,165 @@
+@use 'map';
+/* --------Breakpoints-------- */
+$breakpointSM: 576px;
+$breakpointMD: 768px;
+$breakpointLG: 992px;
+$breakpointXL: 1200px; 
+$breakpointXXL: 1400px;
+@mixin minBreakpointSM {
+    @media (min-width: $breakpointSM) {
+        @content;
+    }
+}  
+@mixin minBreakpointMD {
+    @media (min-width: $breakpointMD) {
+        @content;
+    }
+}  
+@mixin minBreakpointLG {
+    @media (min-width: $breakpointLG) {
+        @content;
+    }
+}  
+@mixin minBreakpointXL {
+    @media (min-width: $breakpointXL) {
+        @content;
+    }
+}  
+@mixin minBreakpointXXL {
+    @media (min-width: $breakpointXXL) {
+        @content;
+    }
+}  
+
+/* --------Colors-------- */
+$color-accent: #E10A16;
+$color-support: #835342;
+$color-support-2: #FEEFDA;
+$grad-accent: linear-gradient(0deg, #C00913 0%, #E10A16 100%) $color-accent;
+
+$color-text: $color-support;
+$color-invert-text: #FFFFFF;
+$color-bg: #fff;
+$color-bg-accent: $color-support-2;
+$color-bg-accent-2: #FFF6ED;
+
+/* --------Fonts Name-------- */
+$font-family-base: 'Nunito Sans', sans-serif;
+$font-family-accent: 'Oswald', sans-serif;
+
+/* --------Font sizes and line-heights-------- */
+@mixin css-text {
+    font-family: $font-family-base;
+    font-weight: 400;
+    font-style: normal;
+    line-height: (24/18);
+    font-size: 18px;
+}
+@mixin css-text-mini {
+    font-family: $font-family-accent;
+    font-style: normal;
+    font-weight: 300;
+    line-height: (24/18);
+    font-size: 18px;
+}
+@mixin css-h1 {
+    font-family: $font-family-accent;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    line-height: (51/42);
+    font-size: 32px;
+    @include minBreakpointSM() {
+        font-size: 34px;
+    }
+    @include minBreakpointMD() {
+        font-size: 36px;
+    }
+    @include minBreakpointLG() {
+        font-size: 38px;
+    }
+    @include minBreakpointXL() {
+        font-size: 40px;
+    }
+    @include minBreakpointXXL() {
+        font-size: 42px;
+    }
+}
+
+@mixin css-h2 {
+    font-family: $font-family-accent;
+    font-style: normal;
+    font-weight: 400;
+    line-height: (40/36);
+    font-size: 28px;
+    @include minBreakpointMD() {
+        font-size: 30px;
+    }
+    @include minBreakpointLG() {
+        font-size: 32px;
+    }
+    @include minBreakpointXL() {
+        font-size: 34px;
+    }
+    @include minBreakpointXXL() {
+        font-size: 36px;
+    }
+}
+@mixin css-h2-mini {
+    font-family: $font-family-accent;
+    font-style: normal;
+    font-weight: 400;
+    line-height: (40/36);
+    font-size: 20px;
+    @include minBreakpointMD() {
+        font-size: 24px;
+    }
+    @include minBreakpointLG() {
+        font-size: 28px;
+    }
+    @include minBreakpointXL() {
+        font-size: 34px;
+    }
+    @include minBreakpointXXL() {
+        font-size: 36px;
+    }
+}
+@mixin css-btn {
+    font-family: $font-family-base;
+    font-weight: 700;
+    font-style: normal;
+    line-height: (24/18);
+    font-size: 14px;
+    @include minBreakpointSM() {
+        font-size: 16px;
+    }
+    @include minBreakpointLG() {
+        font-size: 18px;
+    }
+}
+@mixin css-btn-link {
+    font-family: $font-family-base;
+    font-weight: 400;
+    font-size: 16px;
+    font-style: normal;
+    line-height: (24/16);
+    @include minBreakpointLG() {
+        font-size: 18px;
+    }
+}
+
+
+/* --------Reset element mixin-------- */
+@mixin reset-ul($props : ()) {
+    list-style: none;
+    @if map-has-key($props, "margin") { margin: map-get($props, "margin"); } @else { margin: 0; }
+    @if map-has-key($props, "padding") { padding: map-get($props, "padding"); } @else { padding: 0; }
+}
+@mixin reset-a($props : ()) {
+    @if map-has-key($props, "color") { color: map-get($props, "color"); }
+    &:hover {
+        @if map-has-key($props, color) { color: map-get($props, color); }
+        text-decoration: none;
+    }
+}

@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="section-5__col section-5__col--left">
+        <h2 class="h1 text-color-accent">{{include.title | default: "Наши Награды"}}</h2>
+        <p>{{include.text | default: "Кондитерская фабрика «АНТ» неоднократно становилась победителем и призером самых значимых конкурсов отрасли. Компания на этом не останавливается и продолжает активно принимать участие во всех отраслевых мероприятиях."}}</p>
+    </div>
+    <div class="section-5__col section-5__col--right">
+        <div class="swiper swiper-sertificats">
+            <div class="swiper-wrapper">
+                {% for item in site.data.sertificats %}
+                    {% if item.img %}
+                        <div class="swiper-slide">
+                            <img src="{{ item.img | relative_url }}" alt="сертификат">
+                            <div class="text-mini text-border-left-accent text-color-accent">{{ item.title }}</div> 
+                        </div>
+                    {% endif %} 
+                {% endfor %}
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+</div>

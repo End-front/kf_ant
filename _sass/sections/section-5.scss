@@ -1,0 +1,76 @@
+.section-5 {
+    position: relative;
+    background:url('../images/decor/wave-support-2-to-bottom.svg') repeat-x center top, linear-gradient(180deg, transparent 0%, transparent 12px, #{$color-bg-accent-2} 12px, #{$color-bg-accent-2} 100%);
+    background-size: 1900px 101px, 100% 100%;
+    margin-top: -12px;
+    z-index: 1;
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        @include minBreakpointSM {
+            align-items: center;
+        }
+        @include minBreakpointLG {
+            flex-direction: row;
+        }
+    }
+
+    &__col--left {
+        max-width: 439px;
+        padding-right: 2px;
+        margin-bottom: 25px;
+        @include minBreakpointLG {
+            flex: 0 0 439px;
+            margin-bottom: 0;
+        }
+    } 
+    &__col--right {
+        overflow: hidden;
+        position: relative;
+        width: calc(100% + 30px);
+        align-self: flex-start;
+        margin-left: -15px;
+        @include minBreakpointLG {
+            margin-left: 0;
+            width: auto;
+            flex: 0 0;
+            flex-basis: calc(100% - 437px + 15px);
+        }
+        @include minBreakpointXL {
+            flex-basis: 100%;
+        }
+        @media (min-width: 1500px) {
+            flex-basis: calc(100% - 437px + 50vw - 705px);
+        }
+        &:before {
+            content: '';
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 20px;
+            background: linear-gradient(90deg, #{$color-bg-accent-2} 0%, transparent 100%);
+            z-index: 100;
+            @include minBreakpointLG {
+                display: block;
+            }
+        }
+        .swiper-sertificats {
+            margin-right: auto;
+            width: 260px;
+            max-width: 100%;
+            @include minBreakpointSM {
+                margin-left: auto;
+                width: 340px;
+            }
+            @include minBreakpointLG {
+                width: 562px;
+                margin-left: 20px;
+                margin-right: 0;
+                max-width: calc(100% - 20px);
+            }
+        }
+    }
+}

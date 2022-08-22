@@ -1,0 +1,57 @@
+.accent-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    background: $grad-accent;
+    box-shadow: inset 3px 7px 8px rgba(0, 0, 0, 0.1);
+    color: $color-invert-text;
+    border: 0;
+    border-radius: 100px;
+    text-align: center;
+    padding: 6px (25em/18) 6px;
+    cursor: pointer;
+    min-height: (50em/18);
+    min-width: (170em/18);
+    position: relative;
+    transition: box-shadow 0.1s;
+    @include css-btn;
+    &:before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        bottom: -2px;
+        right: -2px;
+        left: -2px;
+        pointer-events: none;
+        background: linear-gradient(135deg, rgba(#fff, 0) 0%, rgba(#fff, 0.385) 100%);
+        border-radius: 100px;
+        z-index: -1;
+    } 
+    &:active, &:hover {
+        box-shadow: inset 3px 7px 8px rgba(0, 0, 0, 0.5);
+    }
+}
+
+a.accent-btn {
+    @include reset-a((
+        "color": $color-invert-text,
+    ));
+}
+
+.accent-btn--big {
+    min-width: (240em/18);
+    padding-right: (36em/18);
+    padding-left: (36em/18);
+}
+
+.accent-btn--circle {
+    min-width: auto;
+    min-height: auto;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    &:before {
+        display: none;
+    } 
+}

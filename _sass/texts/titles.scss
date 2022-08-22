@@ -1,0 +1,15 @@
+h1:not(.h2):not(.h2-mini), .h1 {
+    @include css-h1;
+}
+
+h2:not(.h1):not(.h2-mini), .h2 {
+    @include css-h2;
+}
+.h2-mini {
+    @include css-h2-mini;
+}
+
+h1, .h1, h2, .h2, .h2-mini {
+    margin-bottom: 30px;
+    margin-top: 0;
+}

@@ -1,0 +1,163 @@
+.products-row-2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: -50px 0 0;
+    @include minBreakpointLG {
+        justify-content: flex-start;
+        margin: -100px -15px 0;
+    }
+    &__item, &__back {
+        border-radius: 22px;
+        @include minBreakpointLG {
+            border-radius: 50px;
+        }
+    }
+    &__item {
+        margin: 50px 0px 0;
+        color: $color-invert-text;
+        background: #62CEF2;
+        display: flex;
+        align-items: center;
+        position: relative;
+        z-index: 0;
+        transition: box-shadow 0.4s;
+        max-width: 600px;
+        width: 100%;
+        @include minBreakpointLG {
+            width: auto;
+            max-width: none;
+            flex: 0 0;
+            flex-basis: calc(50% - 30px);
+            margin: 100px 15px 0;
+        }
+        &:before {
+            content: '';
+            width: 0;
+            padding-top: (32000%/690);
+            display: block;
+        }
+        &:hover {
+            box-shadow: 0 10px 30px rgba(#000, 0.1);
+        }
+    }
+    &__img {
+        pointer-events: none;
+        height: 100%;
+        position: relative;
+        width: 100%;
+        flex: 1 1 auto;
+        img {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            max-height: 120%;
+            width: auto;
+            transform: translate(0, -50%);
+        }
+    }
+    &__text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        align-self: stretch;
+        max-width: (31500%/690);
+        padding: 17px 0 19px 17px;
+        @include minBreakpointSM {
+            padding: 31px 0 33px 17px;
+        }
+        @include minBreakpointMD {
+            padding: 55px 0 50px 26px;
+        }
+        @include minBreakpointLG {
+            padding: 45px 0 35px 26px;
+        }
+        @include minBreakpointXL {
+            padding: 76px 0 67px 46px;
+        }
+        & > a, & > button {
+            margin-top: auto;
+            white-space: nowrap;
+        }
+        .accent-btn {
+            display: none;
+            @include minBreakpointSM {
+                display: inline-flex;
+            }
+        }
+        .link-btn {
+            @include minBreakpointSM {
+                display: none;
+            }
+        }
+    }
+    &__back {
+        position: absolute;
+        overflow: hidden;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        text-align: right;
+        z-index: -1;
+        pointer-events: none;
+        img {
+            height: 100%;
+            width: auto;
+        }
+    }
+
+    /* Uniqi states for items */
+    &__item.product-1 {
+        background: #62CEF2;
+    }
+    &__item.product-1 &__back {
+        background: url('../images/products/back-product-1.svg') no-repeat right center;
+        background-size: auto 100%;
+    }
+
+    &__item.product-2 {
+        background: #FCACD1
+    }
+    &__item.product-2 &__back {
+        background: url('../images/products/back-product-2.svg') no-repeat right center;
+        background-size: auto 100%;
+    }
+
+    &__item.product-3 {
+        background: #FFC38D;
+    }
+    &__item.product-3 &__back {
+        background: url('../images/products/back-product-3.svg') no-repeat right center;
+        background-size: auto 100%;
+    }
+    
+    &__item.product-4 {
+        background: #67DC8D;
+    }
+    &__item.product-4 &__back {
+        background: url('../images/products/back-product-4.svg') no-repeat right center;
+        background-size: auto 100%;
+    }
+     
+    &__item.product-5 {
+        background: #FB7373;
+    }
+    &__item.product-5 &__back {
+        background: url('../images/products/back-product-5.svg') no-repeat right center;
+        background-size: auto 100%;
+    }
+     
+    &__item.product-6 {
+        background: #FDD65D;
+    }
+    &__item.product-6 &__back {
+        background: url('../images/products/back-product-6.svg') no-repeat right center;
+        background-size: auto 100%;
+    }
+}
+a.products-row-2__item {
+    @include reset-a((
+        "color": $color-invert-text, 
+    ))
+}

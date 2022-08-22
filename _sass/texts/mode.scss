@@ -1,0 +1,21 @@
+.text-color-accent {
+    color: $color-accent !important;
+}
+.text-color-base {
+    color: $color-text !important;
+}
+.text-color-invert {
+    color: $color-invert-text !important;
+}
+.text-center {
+    text-align: center !important;
+}
+.text-center-sm {
+    @include minBreakpointSM {
+        text-align: center !important;
+    }
+}
+.text-border-left-accent {
+    border-left: 1px solid $color-accent;
+    padding-left: 14px;
+}

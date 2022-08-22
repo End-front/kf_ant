@@ -1,0 +1,43 @@
+<section id="production" class="section-3">
+    <div class="container">
+        <h2 class="h1 section__title">{{include.title}}</h2>
+        <div class="section-3__item section-3__item--uniq-1">
+            <div class="section-3__img">
+                <img class="section-3__img--mob" src="{{ '/assets/images/img-section-3-item-1-mob.png' | relative_url }}"  alt="item">
+                <img class="section-3__img--desk" src="{{ '/assets/images/img-section-3-item-1.png' | relative_url }}"  alt="item">
+            </div>
+            <div class="section-3__text">
+                <h3 class="h2 text-color-accent">{{ include.subtitle1 }}</h3>
+                {{ include.text1 }}
+                <img class="section-3__pointer-line-mob" src="{{ '/assets/images/decor/section-3-line-mob-1.svg' | relative_url }}"  alt="decor">
+            </div>
+            <svg class="section-3__pointer-line" viewBox="0 0 783 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path xmlns="http://www.w3.org/2000/svg" d="M781.18 1C781.18 1 722.86 137.24 451.57 105.26C151.22 69.85 0.789975 133.91 0.999975 191" stroke="#E2D8D4" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-dasharray="8 8"/>
+            </svg>
+        </div>
+        <div class="section-3__item section-3__item--uniq-2">
+            <div class="section-3__text">
+                <h3 class="h2 text-color-accent">{{ include.subtitle2 }}</h3>
+                {{ include.text2 }}
+                <img class="section-3__pointer-line-mob" src="{{ '/assets/images/decor/section-3-line-mob-2.svg' | relative_url }}"  alt="decor">
+            </div>
+            <div class="section-3__img">
+                <img class="section-3__img--mob" src="{{ '/assets/images/img-section-3-item-2-mob.png' | relative_url }}"  alt="item">
+                <img class="section-3__img--desk" src="{{ '/assets/images/img-section-3-item-2.png' | relative_url }}"  alt="item">
+            </div>
+            <svg class="section-3__pointer-line" viewBox="0 0 746 257" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.3 1C1.3 1 -18 144.62 251.38 99.33C439.76 67.65 671.49 116 744.84 256" stroke="#E2D8D4" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-dasharray="8 8"/>
+            </svg>
+        </div>
+        <div class="section-3__item section-3__item--uniq-3">
+            <div class="section-3__img">
+                <img class="section-3__img--mob" src="{{ '/assets/images/img-section-3-item-3-mob.png' | relative_url }}"  alt="item">
+                <img class="section-3__img--desk" src="{{ '/assets/images/img-section-3-item-3.png' | relative_url }}"  alt="item">
+            </div>
+            <div class="section-3__text">
+                <h3 class="h2 text-color-accent">{{ include.subtitle3 }}</h3>
+                {{ include.text3 }}
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,44 @@
+.plates-3 {
+    &__wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: -25px -20px;
+    }
+    &__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 25px 20px;
+        flex: 0 0 100%;
+        @include minBreakpointSM {
+            flex: 0 0 (400%/12);
+            min-width: 300px;
+        }
+    }
+    &__img {
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &--circle {
+            border-radius: 50%;
+            width: 210px;
+            height: 210px;
+            border-radius: 50%;
+            padding: 15px;
+            background: #FEEFDB;
+        }
+    }
+    &__text {
+        font-size: 22px;
+        line-height: (40/26);
+        font-weight: 700;
+        color: #835342;
+        max-width: (320em/26);
+        text-align: center;
+        @include minBreakpointLG {
+            font-size: 26px;
+        }
+    }
+}

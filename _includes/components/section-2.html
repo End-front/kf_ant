@@ -1,0 +1,20 @@
+<section id="about" class="section--accent section-2">
+    <div class="container">
+        <div class="section-2__col section-2__col--left">
+            <h2 class="h1 text-color-accent">О компании</h2>
+            {{ include.text }}
+            <div class="section-2__img-mob">
+                <img src="{{ '/assets/images/img-section-2.png' | relative_url }}"  alt="img">
+            </div>
+            <div class="section-2__map">
+                <div class="section-2__map__text text-mini text-color-accent text-border-left-accent">{{ include.adress | default: site.data.infocompany.adress }}</div>
+                <div class="section-2__map__img">
+                    <img src="{{ '/assets/images/img-section-2-map.png' | relative_url }}"  alt="карта">
+                </div>
+            </div>
+        </div>
+        <div class="section-2__col section-2__col--right not-section-padding--bottom">
+            <img src="{{ '/assets/images/img-section-2.png' | relative_url }}"  alt="img">
+        </div>
+    </div>
+</section>

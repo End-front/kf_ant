@@ -1,0 +1,7 @@
+.section-6 {
+    position: relative;
+    background:url('../images/decor/wave-white-to-bottom.svg') repeat-x center top, linear-gradient(180deg, transparent 0%, transparent 12px, #{$color-bg} 12px, #{$color-bg} 100%);
+    background-size: 1900px 101px, 100% 100%;
+    margin-top: -12px;
+    z-index: 1;
+}

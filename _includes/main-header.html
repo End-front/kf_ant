@@ -1,0 +1,25 @@
+<header class="header container">
+    <a href="{{ site.baseurl }}" class="header__logo">
+        <img src="{{ '/assets/images/logo.svg' | relative_url }}"  alt="logo">
+        <div class="header__logo__text text-color-accent">
+            <span>Кондитерская фабрика «АНТ»</span> 
+            <span>Производство с 1994 года.</span>
+        </div>
+        {% include svgInline/logo-plate-header.html %}
+    </a>
+    <nav class="header__nav"><ul>
+        <li><a href="{% if page.url != '/' and page.url != '/index.html' %}{{ site.baseurl }}{% endif %}#about">О компании</a></li>
+        <li><a href="{% if page.url != '/' and page.url != '/index.html' %}{{ site.baseurl }}{% endif %}#production">Производство</a></li>
+        <li><a href="{% if page.url != '/' and page.url != '/index.html' %}{{ site.baseurl }}{% endif %}#products">Продукция</a></li>
+        <li><a href="{% if page.url != '/' and page.url != '/index.html' %}{{ site.baseurl }}{% endif %}#sertificats">Награды</a></li>
+    </ul><button class="header__nav__exit"><span></span><span></span></button></nav>
+    <a class="header__btn accent-btn {% if site.data.infocompany.phoneText and site.data.infocompany.email %} accent-btn--big {% endif %}">
+        {{ site.data.infocompany.phoneText }} 
+        {% if site.data.infocompany.phoneText and site.data.infocompany.email %} <br> {% endif %}
+        {{ site.data.infocompany.email }}
+    </a>
+    <button class="header__burger accent-btn accent-btn--circle">
+        <span></span><span></span><span></span>
+    </button>
+    <div class="header__nav-back"></div>
+</header>

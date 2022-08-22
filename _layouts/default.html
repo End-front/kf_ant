@@ -1,0 +1,22 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>{% if page.site_title %}{{page.site_title}}{% else %}{{ site.data.infocompany.site_title | default : 'Кондитерская фабрика «АНТ»' }}{% endif %}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
+</head>
+<body>
+    
+    {% include preloader.html %}
+    {% include main-header.html %}
+    {{ content }}
+    {% include main-footer.html %}
+    {{ '/assets/js/swiper.js' | relative_url }}
+    <script src="{{ '/assets/js/swiper.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/script.js' | relative_url }}"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+---
+layout: default
+---
+{% assign prevProductUrl = nil %}
+{% assign nextProductUrl = nil %}
+{% for i in (0..site.products.size)%}
+    {% if site.products[i].url == page.url %}
+        {% assign index = i | plus: 1 %}
+        {% if site.products[index] and site.products.size > index %} {% assign nextProductUrl = site.products[index].url %} {% endif %}
+        {% assign index = i | minus: 1 %}
+        {% if site.products[index] and index >= 0 %} {% assign prevProductUrl = site.products[index].url %} {% endif %}
+    {% endif %}
+{% endfor %}
+
+<section class="text-color-invert section-product section-{{page.uniclass}}">
+    <div class="container">
+        <h1 class="section-product__title">{{page.title_section | default: page.title}}</h1>
+        <div class="section-product__text">
+            {% if page.subtitle %}<h2 class="section-product__subtitle">{{page.subtitle}}</h2>{% endif %}
+            {% if page.describe %}<p class="section-product__desc">{{page.describe}}</p>{% endif %}
+            <div class="section-product__benefit">
+                {% if page.size_upakovki %} <div class="section-product__benefit__item section-product__benefit__size">
+                    <div class="section-product__benefit__img">
+                        <img src="{{ '/assets/images/icons/size.svg' | relative_url }}"  alt="decor">
+                    </div>
+                    <div class="section-product__benefit__text">Размер упаковки:<br><strong>{{page.size_upakovki}}</strong></div>
+                </div> {% endif %}
+                {% if page.count_in %} <div class="section-product__benefit__item section-product__benefit__count">
+                    <div class="section-product__benefit__img">
+                        <img src="{{ '/assets/images/icons/boxes.svg' | relative_url }}"  alt="decor">
+                    </div>
+                    <div class="section-product__benefit__text">Кол-во в гофрокоробе:<br><strong>{{page.count_in}}</strong></div>
+                </div> {% endif %}
+                {% if page.size_gofro %} <div class="section-product__benefit__item section-product__benefit__all-size">
+                    <div class="section-product__benefit__img">
+                        <img src="{{ '/assets/images/icons/box.svg' | relative_url }}"  alt="decor">
+                    </div>
+                    <div class="section-product__benefit__text">Размер гофрокороба:<br><strong>{{page.size_gofro}}</strong></div>
+                </div> {% endif %}
+            </div>
+        </div>
+        <div class="section-product__img">
+            {% if prevProductUrl %} <a href="{{prevProductUrl}}" class="section-product__prev-btn"><img src="{{ '/assets/images/icons/arrow-to-left.svg' | relative_url }}"  alt="arrow"></a> {% endif %}
+            <div class="section-product__wrapper-img">
+                {% if page.uniclass == 'product-1' %}<img src="{{ '/assets/images/products/product-1/animation/product-1.png' | relative_url }}"  alt="decor" class="section-product__img__product section-product__img__product--1"><img src="{{ '/assets/images/products/product-1/animation/product-2.png' | relative_url }}"  alt="decor" class="section-product__img__product section-product__img__product--2"><img src="{{ '/assets/images/products/product-1/animation/product-3.png' | relative_url }}"  alt="decor" class="section-product__img__product section-product__img__product--3"><img src="{{ '/assets/images/products/product-1/animation/decor-1.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--1"><img src="{{ '/assets/images/products/product-1/animation/decor-2.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--2"><img src="{{ '/assets/images/products/product-1/animation/decor-3.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--3"><img src="{{ '/assets/images/products/product-1/animation/decor-4.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--4"><img src="{{ '/assets/images/products/product-1/animation/decor-5.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--5"><img src="{{ '/assets/images/products/product-1/animation/decor-6.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--6"><img src="{{ '/assets/images/products/product-1/animation/decor-7.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--7"><img src="{{ '/assets/images/products/product-1/animation/decor-8.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--8"><img src="{{ '/assets/images/products/product-1/animation/decor-9.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--9"><img src="{{ '/assets/images/products/product-1/animation/cloud-1.png' | relative_url }}"  alt="decor" class="section-product__img__cloud section-product__img__cloud--1"> {% endif %}
+                {% if page.uniclass == 'product-2' %}<img src="{{ '/assets/images/products/product-2/animation/product-1.png' | relative_url }}"  alt="decor" class="section-product__img__product section-product__img__product--1"><img src="{{ '/assets/images/products/product-2/animation/decor-1.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--1"><img src="{{ '/assets/images/products/product-2/animation/decor-2.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--2"><img src="{{ '/assets/images/products/product-2/animation/decor-3.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--3"><img src="{{ '/assets/images/products/product-2/animation/decor-4.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--4"><img src="{{ '/assets/images/products/product-2/animation/decor-5.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--5"><img src="{{ '/assets/images/products/product-2/animation/decor-6.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--6"><img src="{{ '/assets/images/products/product-2/animation/decor-7.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--7"><img src="{{ '/assets/images/products/product-2/animation/decor-8.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--8"><img src="{{ '/assets/images/products/product-2/animation/decor-9.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--9"><img src="{{ '/assets/images/products/product-2/animation/decor-10.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--10"><img src="{{ '/assets/images/products/product-2/animation/decor-11.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--11"><img src="{{ '/assets/images/products/product-2/animation/cloud-1.png' | relative_url }}"  alt="decor" class="section-product__img__cloud section-product__img__cloud--1">{% endif %}
+                {% if page.uniclass == 'product-3' %}<img src="{{ '/assets/images/products/product-3/animation/product-1.png' | relative_url }}"  alt="decor" class="section-product__img__product section-product__img__product--1"><img src="{{ '/assets/images/products/product-3/animation/product-2.png' | relative_url }}"  alt="decor" class="section-product__img__product section-product__img__product--2"><img src="{{ '/assets/images/products/product-3/animation/product-3.png' | relative_url }}"  alt="decor" class="section-product__img__product section-product__img__product--3"><img src="{{ '/assets/images/products/product-3/animation/decor-1.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--1"><img src="{{ '/assets/images/products/product-3/animation/decor-2.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--2"><img src="{{ '/assets/images/products/product-3/animation/decor-3.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--3"><img src="{{ '/assets/images/products/product-3/animation/decor-4.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--4"><img src="{{ '/assets/images/products/product-3/animation/decor-5.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--5"><img src="{{ '/assets/images/products/product-3/animation/decor-6.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--6"><img src="{{ '/assets/images/products/product-3/animation/decor-7.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--7"><img src="{{ '/assets/images/products/product-3/animation/decor-8.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--8"><img src="{{ '/assets/images/products/product-3/animation/cloud-1.png' | relative_url }}"  alt="decor" class="section-product__img__cloud section-product__img__cloud--1">{% endif %}
+                {% if page.uniclass == 'product-4' %}<img src="{{ '/assets/images/products/product-4/animation/product-1.png' | relative_url }}"  alt="decor" class="section-product__img__product section-product__img__product--1"><img src="{{ '/assets/images/products/product-4/animation/product-2.png' | relative_url }}"  alt="decor" class="section-product__img__product section-product__img__product--2"><img src="{{ '/assets/images/products/product-4/animation/decor-1.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--1"><img src="{{ '/assets/images/products/product-4/animation/decor-2.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--2"><img src="{{ '/assets/images/products/product-4/animation/decor-3.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--3"><img src="{{ '/assets/images/products/product-4/animation/product-3.png' | relative_url }}"  alt="decor" class="section-product__img__product section-product__img__product--3"><img src="{{ '/assets/images/products/product-4/animation/decor-5.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--5"><img src="{{ '/assets/images/products/product-4/animation/decor-6.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--6"><img src="{{ '/assets/images/products/product-4/animation/decor-7.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--7"><img src="{{ '/assets/images/products/product-4/animation/decor-8.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--8"><img src="{{ '/assets/images/products/product-4/animation/cloud-1.png' | relative_url }}"  alt="decor" class="section-product__img__cloud section-product__img__cloud--1">{% endif %}
+                {% if page.uniclass == 'product-5' %}<img src="{{ '/assets/images/products/product-5/animation/product-1.png' | relative_url }}"  alt="decor" class="section-product__img__product section-product__img__product--1"><img src="{{ '/assets/images/products/product-5/animation/decor-1.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--1"><img src="{{ '/assets/images/products/product-5/animation/decor-2.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--2"><img src="{{ '/assets/images/products/product-5/animation/decor-3.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--3"><img src="{{ '/assets/images/products/product-5/animation/decor-4.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--4"><img src="{{ '/assets/images/products/product-5/animation/decor-5.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--5"><img src="{{ '/assets/images/products/product-5/animation/decor-6.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--6"><img src="{{ '/assets/images/products/product-5/animation/decor-7.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--7"><img src="{{ '/assets/images/products/product-5/animation/decor-8.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--8"><img src="{{ '/assets/images/products/product-5/animation/decor-9.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--9"><img src="{{ '/assets/images/products/product-5/animation/decor-10.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--10"><img src="{{ '/assets/images/products/product-5/animation/cloud-1.png' | relative_url }}"  alt="decor" class="section-product__img__cloud section-product__img__cloud--1">{% endif %}
+                {% if page.uniclass == 'product-6' %}<img src="{{ '/assets/images/products/product-6/animation/product-1.png' | relative_url }}"  alt="decor" class="section-product__img__product section-product__img__product--1"><img src="{{ '/assets/images/products/product-6/animation/decor-1.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--1"><img src="{{ '/assets/images/products/product-6/animation/decor-2.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--2"><img src="{{ '/assets/images/products/product-6/animation/decor-3.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--3"><img src="{{ '/assets/images/products/product-6/animation/decor-4.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--4"><img src="{{ '/assets/images/products/product-6/animation/decor-5.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--5"><img src="{{ '/assets/images/products/product-6/animation/decor-6.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--6"><img src="{{ '/assets/images/products/product-6/animation/decor-7.png' | relative_url }}"  alt="decor" class="section-product__img__decor section-product__img__decor--7"><img src="{{ '/assets/images/products/product-6/animation/cloud-1.png' | relative_url }}"  alt="decor" class="section-product__img__cloud section-product__img__cloud--1">{% endif %}
+            </div>
+            {% if nextProductUrl %} <a href="{{nextProductUrl}}" class="section-product__next-btn"><img src="{{ '/assets/images/icons/arrow-to-right.svg' | relative_url }}"  alt="arrow"></a> {% endif %}
+        </div>
+    </div>
+</section>
+<section class="section--half-height">
+    <div class="container">
+        <div class="plates-3">
+            <div class="plates-3__wrapper">
+                {% for item in page.advantages %}
+                    <div class="plates-3__item">
+                        <div class="plates-3__img plates-3__img--circle"><img src="{{ item.img | relative_url }}" alt="icon"></div>
+                        <div class="plates-3__text">{{item.text}}</div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section--half-height section--accent">
+    <div class="container">
+        <h2 class="h1 section__title text-center-sm">Продукция бренда</h2>
+        <div class="swiper swiper__brands-product">
+            <div class="swiper-wrapper">
+                {% for item in page.brands_products %}
+                    <div class="swiper-slide">
+                        <img src="{{ item.img | relative_url }}" alt="продукция бренда">
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="swiper-nav">
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+  
+        </div>
+    </div>
+</section>
+<section class="section-6">
+    <div class="container">
+        <h2 class="h1 section__title">Другая продукция</h2>
+        {% include productsView/slider-row.html %}
+    </div>
+</section>

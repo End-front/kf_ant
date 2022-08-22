@@ -1,0 +1,21 @@
+<footer class="footer container">
+    <div class="footer__logo">
+        <img src="{{ '/assets/images/logo.svg' | relative_url }}"  alt="logo">
+    </div>
+    <div class="footer__info">
+        <div class="footer__info__col">
+            <a class="footer__info__item" href="tel:+{{ site.data.infocompany.phone }}"><span class="footer__info__icon"><img src="{{ '/assets/images/icons/phone.svg' | relative_url }}"  alt="icon"></span> <span>{{ site.data.infocompany.phoneText }}</span></a>
+            <a class="footer__info__item" href="mailto:{{ site.data.infocompany.email }}"><span class="footer__info__icon"><img src="{{ '/assets/images/icons/mail.svg' | relative_url }}"  alt="icon"></span> <span>{{ site.data.infocompany.email }}</span></a>
+        </div>
+        <div class="footer__info__col">
+            <span class="footer__info__item"><span class="footer__info__icon"><img src="{{ '/assets/images/icons/location.svg' | relative_url }}"  alt="icon"></span> <span>{{ site.data.infocompany.adress }}</span></span>
+        </div>
+    </div>
+    <div class="footer__copyrights">
+        Кондитерская фабрика «АНТ» © 1994 — <span class="js-current-year">2022</span> <br>
+        {% if site.data.infocompany.IPname %} ИП {{ site.data.infocompany.IPname }} {% endif %}   
+        {% if site.data.infocompany.INN %} ИНН: {{ site.data.infocompany.INN }} {% endif %} <br>  
+        {% if site.data.infocompany.OGRN %} ОГРН: {{ site.data.infocompany.OGRN }} {% endif %}   
+        {% if site.data.infocompany.OKPO %} ОКПО: {{ site.data.infocompany.OKPO }} {% endif %}   
+    </div>
+</footer>

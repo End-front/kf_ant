@@ -1,0 +1,93 @@
+.footer {
+    display: flex;
+    padding-top: 28px;
+    padding-bottom: 28px;
+    flex-direction: column;
+    @include minBreakpointSM {
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    @include minBreakpointLG {
+        flex-wrap: nowrap;
+    }
+    &__logo {
+        display: none;
+        @include minBreakpointMD {
+            display: block;
+            margin-right: 50px;
+        }    
+    }
+    &__logo, &__info {
+        @include minBreakpointMD {
+            margin-right: 50px;
+        }
+    }
+    &__info {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        @include minBreakpointSM {
+            flex-direction: row;
+        }
+        @include minBreakpointMD {
+            flex: 1 1 0%;
+        }
+        @include minBreakpointLG {
+            flex: 0 0 auto;
+        }
+        &__col {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-right: 45px;
+            
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+        &__item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 8px;
+            @include minBreakpointSM {
+                margin-bottom: 0;
+            }
+    
+        }
+        &__icon {
+            margin-right: 5px;
+            width: 20px;
+            text-align: center;
+            img {
+                vertical-align: sub;
+            }
+        }
+    }
+    &__copyrights {
+        font-size: 14px;
+        margin-top: 8px;
+        @include minBreakpointSM {
+            flex: 1 1 100%;
+        }
+        @include minBreakpointLG {
+            text-align: right;
+            margin-left: auto;
+            margin-top: 0;
+            flex: 0 1 auto;
+        }
+    }
+}
+
+a.footer__info__item {
+    @include reset-a((
+        color: $color-text, 
+    ));
+    transition: color 0.3s;
+    &:hover {
+        color: $color-accent;
+    }
+    &:active {
+        text-decoration: underline;
+    }
+}

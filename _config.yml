@@ -1,0 +1,36 @@
+collections:
+  products:
+    output: true
+
+include: ['pages']
+exclude: []
+livereload: true
+open_url: true
+
+defaults:
+  - scope:
+      type: 'products'
+    values:
+      layout: 'product'
+  
+  - scope:
+      path: 'pages'
+      type: 'pages'
+    values:
+      layout: 'default' 
+      permalink: /:basename:output_ext
+
+
+# plugins:
+#  - jekyll-compress-images
+
+# autoprefixer:
+#   browsers:
+#     - "> 0.1%",
+#     - "last 10 versions",
+#     - "not ie 5.5-10",
+#     - "not dead",
+#     - "not op_mini all",
+#     - "not baidu 7.12",
+#     - "not kaios 2.5",
+#     - "not safari 5.1"

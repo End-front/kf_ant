@@ -1,0 +1,221 @@
+// .swiper-sertificats {
+//     margin: 0;
+//     overflow: visible;
+//     .swiper-slide {
+//         transition: margin 0.4s ease-in-out, transform 0.4s ease-in-out; 
+//         img {
+//             transform: scale(0.65);
+//             transition: transform 0.4s;
+//         }
+//         .text-mini {
+//             width: 290px;
+//             margin-left: auto;
+//             margin-right: auto;
+//             max-width: calc(100% - 100px);
+//             opacity: 0;
+//             transform: translate(0, -50px);
+//             transition: opacity 0.4s, transform 0.4s;
+//             pointer-events: none;
+//         }
+//     }
+//     .swiper-slide.swiper-slide-duplicate-next, .swiper-slide.swiper-slide-duplicate-active {
+//         transition: all 0s;
+//     }
+//     .swiper-slide.swiper-slide-prev {
+//         transform: translate(-150px, 0);
+//     }
+//     .swiper-slide.swiper-slide-duplicate-prev {
+//         // margin-left: -77px;
+//     }
+//     .swiper-slide.swiper-slide-active {
+//         margin-right: -153px !important;
+//         img {
+//             transform: scale(1);
+//         }
+//         .text-mini {
+//             transform: translate(0, 0);
+//             opacity: 1;
+//             pointer-events: auto;
+//         }
+//     }
+// }
+
+
+.swiper-sertificats {
+    margin: 0;
+    overflow: visible;
+    .swiper-slide {
+        transition: margin-right 0.4s ease-in-out, margin-left 0.4s ease-in-out, transform 0.4s ease-in-out; 
+        img {
+            transition: transform 0.4s;
+            max-width: (45000%/562);
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 20px;
+            @include minBreakpointLG {
+                transform: scale(0.65);
+            }
+        }
+        .text-mini {
+            width: 290px;
+            margin-left: 15px;
+            margin-right: auto;
+            opacity: 0;
+            transform: translate(0, -50px);
+            transition: opacity 0.4s, transform 0.4s;
+            pointer-events: none;
+            max-width: calc(100% - 65px);
+            @include minBreakpointSM {
+                max-width: calc(100% - 100px);
+                margin-left: auto;
+            }
+        }
+    }
+    .swiper-button-prev, .swiper-button-next {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #FEEFDB;
+        color: #835342;
+        top: 100%;
+        margin-top: -40px !important;
+        @include minBreakpointLG {
+            top: 100%;
+        }
+        &::after {
+            font-size: 16px;
+            font-weight: 800;
+        }
+    }
+    .swiper-button-prev::after {
+        margin-left: -3px;
+    }
+    .swiper-button-next::after {
+        margin-right: -3px;
+    }
+    .swiper-button-prev {
+        display: none;
+        @include minBreakpointSM {
+            display: flex;
+        }
+    }
+    
+    .swiper-slide.swiper-slide-active, .swiper-slide.swiper-slide-duplicate-active {
+        .text-mini {
+            transform: translate(0, 0);
+            opacity: 1;
+            pointer-events: auto;
+        } 
+    }
+    @include minBreakpointLG {
+        .swiper-slide.swiper-slide-prev, .swiper-slide.swiper-slide-duplicate-prev {
+            transform: translate(-153px, 0);
+        }
+        .swiper-slide.swiper-slide-duplicate-prev, .swiper-slide.swiper-slide-duplicate-active:first-child {
+            margin-left: -77px;
+        }
+        .swiper-slide.swiper-slide-active {
+            margin-left: 0;
+            transition: margin-right 0.4s ease-in-out, margin-left 0s ease-in-out, transform 0.4s ease-in-out; 
+        }
+        .swiper-slide.swiper-slide-active, .swiper-slide.swiper-slide-duplicate-active {
+            margin-right: -153px !important;
+            img {
+                transform: scale(1);
+            }
+            .text-mini {
+                transform: translate(0, 0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+        }
+    }
+   
+}
+
+.swiper__brands-product {
+    .swiper-slide {
+        text-align: center;
+        img {
+            vertical-align: top;
+            max-width: 100%;
+        }
+    }
+    .swiper-nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .swiper-button-prev, .swiper-button-next {
+        width: 30px;
+        height: 30px;
+        border-radius: 100%;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+        color: #835342;
+        position: static;
+        transition: opacity 0.3s;
+        margin-top: 80px !important;
+        &.swiper-button-lock {
+            opacity: 0;
+            pointer-events: none;
+            margin-top: 0px !important;
+            margin-bottom: -30px;
+        }
+        &::after {
+            font-size: 14px;
+            font-weight: 800;
+        }
+        @include minBreakpointMD {
+            width: 40px;
+            height: 40px;
+            &::after {
+                font-size: 16px;
+            }
+            &.swiper-button-lock {
+                margin-bottom: -40px;
+            }
+        }
+       
+    }
+    .swiper-button-prev::after {
+        margin-left: -1px;
+        @include minBreakpointMD {
+            margin-left: -3px;
+        }
+    }
+    .swiper-button-next::after {
+        margin-right: -1px;
+        @include minBreakpointMD {
+            margin-right: -3px;
+        }
+    }
+    .swiper-pagination {
+        position: static !important;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: auto;
+        margin-top: 80px;
+        margin-right: 12px;
+        margin-left: 12px;
+        &-lock {
+            margin-top: 0;
+        }
+        &-bullet {
+            background: #D9D9D9;
+            opacity: 1;
+            transition: background-color 0.3s;
+            margin: 0 12px !important;
+            &-active {
+                background: #835342;
+            }
+        }
+    }
+}

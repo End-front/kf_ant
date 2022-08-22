@@ -1,0 +1,106 @@
+.section-2 {
+    overflow: hidden;
+    .container {
+        display: flex;
+        align-items: center;
+        align-self: stretch;
+        flex-wrap: wrap;
+        @include minBreakpointMD {
+            flex-wrap: nowrap;
+        }
+    }
+    &__col {
+        
+    }
+    &__col--left {
+        position: relative;
+        z-index: 1;
+        flex: 1 1 100%;
+        max-width: 100%;
+        @include minBreakpointMD {
+            flex: 0 0 50%;
+            padding-right: 15px;
+        }
+    }
+    &__col--right {
+        align-self: flex-end;
+        pointer-events: none;
+        position: relative;
+        flex: 1 1 100%;
+        display: none;
+        @include minBreakpointMD {
+            flex: 1 0;
+            flex-basis: calc(50% + 50vw - 355px);  
+            display: block;
+        }
+        @include minBreakpointXL {
+            flex-basis: calc(50% + 50vw - 705px);  
+        }
+        @media (min-width: 1920px) {
+            flex-basis: 960px;
+        }
+        img {
+            max-width: 111%;
+            width: auto;
+            vertical-align: top;
+            margin-left: -11%;
+            // position: absolute;
+            // bottom: 0;
+            // left: 0;
+        }
+    }
+    &__map {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        @include minBreakpointSM {
+            flex-direction: row;
+            align-items: center;
+        }
+        @include minBreakpointMD {
+            margin-top: 1.25em;
+        }
+        &__text {
+            max-width: (265em/18);
+            margin-bottom: 11px;
+            @include minBreakpointSM {
+                padding-right: (18em/18);
+                max-width: (228em/18);
+                margin-bottom: 0;
+            }
+        }
+        &__img {
+            flex: 1 1 auto;
+            align-self: center;
+            img {
+                max-width: 100%;
+                @include minBreakpointSM {
+                    margin-bottom: -10%;
+                }
+            }
+        }
+    }
+    &__img-mob {
+        margin-bottom: 20px;
+        position: relative;
+        pointer-events: none;
+        @include minBreakpointMD {
+            display: none;
+        }
+        &:before {
+            content: '';
+            width: calc(100vw + 20px);
+            height: (14800%/377);
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
+            background: linear-gradient(0deg, $color-bg-accent 13.51%, rgba(254, 239, 218, 0) 100%);
+            z-index: 1;
+        }
+        img {
+            max-width: (50200%/290);
+            transform: translate(#{-(5500%/502)},0);
+        }
+    }
+}
