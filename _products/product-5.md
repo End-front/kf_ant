@@ -27,6 +27,19 @@ advantages:
 #------ Продукция бренда - 3 экран ------
 brands_products:
     - img: /assets/images/products/product-5/brands/item-1.png
+      img_slider: /assets/images/products/product-5/for-slider/item-1.png
+      subtitle: Рожок с маршмеллоу «Nicitimo» ваниль # Подзаголовок
+      describe: Хрустящие десерты с воздушной начинкой. # Описание под заголовком
+      size_upakovki: 170x75x50 мм # Размер упаковки
+      count_in: 42 шт # Кол-во в гофрокоробе
+      size_gofro: 395x240x150 мм # Размер гофрокороба
     - img: /assets/images/products/product-5/brands/item-2.png
+      img_slider: /assets/images/products/product-5/for-slider/item-2.png
+      subtitle: Рожок с маршмеллоу «Nicitimo» клубника # Подзаголовок
+      describe: Хрустящие десерты с воздушной начинкой. # Описание под заголовком
+      size_upakovki: 170x75x50 мм # Размер упаковки
+      count_in: 42 шт # Кол-во в гофрокоробе
+      size_gofro: 395x240x150 мм # Размер гофрокороба
     - img: /assets/images/products/product-5/brands/item-3.png
+      is_first_slide: true
 ---

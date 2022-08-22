@@ -27,6 +27,19 @@ advantages:
 #------ Продукция бренда - 3 экран ------
 brands_products:
     - img: /assets/images/products/product-6/brands/item-1.png
+      img_slider: /assets/images/products/product-6/for-slider/item-1.png
+      subtitle: Желейные палочки «Nicitimo» кола - бабл гам # Подзаголовок
+      describe: Отличное лакомство с натуральными ингредиентами для детей и взрослых. # Описание под заголовком
+      size_upakovki: 187x68x70 мм # Размер упаковки
+      count_in: 15 шт # Кол-во в гофрокоробе
+      size_gofro: 395x240x150 мм # Размер гофрокороба
     - img: /assets/images/products/product-6/brands/item-2.png
+      is_first_slide: true
     - img: /assets/images/products/product-6/brands/item-3.png
+      img_slider: /assets/images/products/product-6/for-slider/item-3.png
+      subtitle: Желейные палочки «Nicitimo» апельсин - ананас # Подзаголовок
+      describe: Отличное лакомство с натуральными ингредиентами для детей и взрослых. # Описание под заголовком
+      size_upakovki: 187x68x70 мм # Размер упаковки
+      count_in: 15 шт # Кол-во в гофрокоробе
+      size_gofro: 395x240x150 мм # Размер гофрокороба
 ---

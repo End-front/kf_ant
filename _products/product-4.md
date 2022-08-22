@@ -25,8 +25,23 @@ advantages:
       text: Практичная упаковка
 
 #------ Продукция бренда - 3 экран ------
+# Обязательные параметры: img - картинка которая будет отображаться
+# Необязательные: img_slider - если нужна другая картинка в слайдере на первом экране
+# exlude_slider - если НЕ нужно показывать в слайдере на первом экране, возможные значения: true - убрать, false - оставить как было (либо можно просто убрать этот параметр)
+# subtitle, describe, size_upakovki, count_in, size_gofro - все настройки как на первом экране
 brands_products:
     - img: /assets/images/products/product-4/brands/item-1.png
+      img_slider: /assets/images/products/product-4/brands/item-5.png
+      # img_slider: /assets/images/products/product-4/animation/product-3.png
+      subtitle: Вафельные рожки с начинками со вкусом шоколада и сгущенного молока, 200 г, 500 г # Подзаголовок
+      describe: Хрустящие десерты с кремовой начинкой со вкусом шоколада и сгущенного молока. # Описание под заголовком
+      size_upakovki: 220х180х50 мм, 290х180х70 мм # Размер упаковки
+      count_in: 12 шт, 5 шт # Кол-во в гофрокоробе
+      size_gofro: 390х260х225 мм # Размер гофрокороба
     - img: /assets/images/products/product-4/brands/item-2.png
+      is_first_slide: true
     - img: /assets/images/products/product-4/brands/item-3.png
+      subtitle: Вафельные рожки с начинками со вкусом шоколада и сгущенного молока, россыпью 3 кг # Подзаголовок
+      describe: Хрустящие десерты с кремовой начинкой со вкусом шоколада и сгущенного молока. # Описание под заголовком
+      size_gofro: 390х260х225 мм # Размер гофрокороба
 ---

@@ -36,6 +36,7 @@
             width: auto;
             flex: 0 0;
             flex-basis: calc(100% - 437px + 15px);
+            max-width: 1200px;
         }
         @include minBreakpointXL {
             flex-basis: 100%;

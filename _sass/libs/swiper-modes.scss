@@ -84,7 +84,8 @@
         top: 100%;
         margin-top: -40px !important;
         @include minBreakpointLG {
-            top: 100%;
+            top: 5%;
+            margin-top: 0 !important;
         }
         &::after {
             font-size: 16px;
@@ -139,7 +140,10 @@
 
 .swiper__brands-product {
     .swiper-slide {
-        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-self: center;
         img {
             vertical-align: top;
             max-width: 100%;
