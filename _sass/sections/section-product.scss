@@ -36,6 +36,15 @@
     }
 }
 
+.section-product__splider-text {
+    @include minBreakpointLG {
+        width: calc(100% + 20px);
+        .swiper-slide {
+            padding-right: 20px;
+        }
+    }
+}
+
 .swiper__brands-product-allow-click, .swiper__brands-product-first-slide{
     cursor: pointer;
 }
