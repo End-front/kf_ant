@@ -8,7 +8,9 @@
     height: 100%;
     overflow: visible;
     z-index: 20;
-    pointer-events: none;
+    @media (min-width: $breakpointMD) {
+        pointer-events: none;
+    }
     .swiper-slide {
         text-align: center;
         display: flex;

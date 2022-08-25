@@ -112,14 +112,18 @@ function productPage() {
         slidesPerView: 1,
         loop: true,
         spaceBetween: 60,
-        allowTouchMove: false,
         speed: 700,
+        breakpoints: {
+            768: {
+                allowTouchMove: false,
+            }
+        }
     })
     let imges = new Swiper('.section-product__splider-img', {
         slidesPerView: 1,
         loop: true,
         spaceBetween: -100,
-        allowTouchMove: false,
+        // allowTouchMove: false,
         speed: 700,
         breakpoints: {
             420: {
@@ -127,6 +131,9 @@ function productPage() {
             },
             576: {
                 spaceBetween: -300,
+            },
+            768: {
+                allowTouchMove: false,
             }
         }
     })
@@ -160,6 +167,39 @@ function productPage() {
             }
         }
     });
+
+    textes.on('slideChange', function(swiper) {
+        let differents = swiper.activeIndex - imges.activeIndex;
+        let direction = differents < 0 ? 1 : 0;
+        switch(differents) { 
+            case 0: direction = false; break;
+            case -1: direction = 1; break;
+            case 1: direction = 0; break;
+            default: direction = 2; break;
+        }
+        switch(direction) {
+            case false: break;
+            case 1: imges.slidePrev(700, false); break;
+            case 0: imges.slideNext(700, false); break;
+            case 2: imges.slideTo(swiper.activeIndex, 700, false); break;
+        }
+    })
+    imges.on('slideChange', function(swiper) {
+        let differents = swiper.activeIndex - textes.activeIndex;
+        let direction = differents < 0 ? 1 : 0;
+        switch(differents) { 
+            case 0: direction = false; break;
+            case -1: direction = 1; break;
+            case 1: direction = 0; break;
+            default: direction = 2; break;
+        }
+        switch(direction) {
+            case false: break;
+            case 1: textes.slidePrev(700, false); break;
+            case 0: textes.slideNext(700, false); break;
+            case 2: textes.slideTo(swiper.activeIndex, 700, false); break;
+        }
+    })
 
     if(imges.slides) {
         let length = 0;
