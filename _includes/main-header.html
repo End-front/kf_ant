@@ -8,10 +8,10 @@
         {% include svgInline/logo-plate-header.html %}
     </a>
     <nav class="header__nav"><ul>
-        <li><a href="{% if page.url != '/' and page.url != 'index.html' %}{{ site.baseurl | default: '/index.html' }}{% endif %}#about">О компании</a></li>
-        <li><a href="{% if page.url != '/' and page.url != 'index.html' %}{{ site.baseurl | default: '/index.html' }}{% endif %}#production">Производство</a></li>
-        <li><a href="{% if page.url != '/' and page.url != 'index.html' %}{{ site.baseurl | default: '/index.html' }}{% endif %}#products">Продукция</a></li>
-        <li><a href="{% if page.url != '/' and page.url != 'index.html' %}{{ site.baseurl | default: '/index.html' }}{% endif %}#sertificats">Награды</a></li>
+        <li><a href="{% if page.url != '/' and page.url != 'index.html' and page.url != '/index.html' %}{{ site.baseurl | default: '/index.html' }}{% endif %}#about">О компании</a></li>
+        <li><a href="{% if page.url != '/' and page.url != 'index.html' and page.url != '/index.html' %}{{ site.baseurl | default: '/index.html' }}{% endif %}#production">Производство</a></li>
+        <li><a href="{% if page.url != '/' and page.url != 'index.html' and page.url != '/index.html' %}{{ site.baseurl | default: '/index.html' }}{% endif %}#products">Продукция</a></li>
+        <li><a href="{% if page.url != '/' and page.url != 'index.html' and page.url != '/index.html' %}{{ site.baseurl | default: '/index.html' }}{% endif %}#sertificats">Награды</a></li>
     </ul><button class="header__nav__exit"><span></span><span></span></button></nav>
     <a class="header__btn accent-btn {% if site.data.infocompany.phoneText and site.data.infocompany.email %} accent-btn--big {% endif %}">
         {{ site.data.infocompany.phoneText }} 
