@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });  
     
-    productPage();
+    new productPage();
 
     let mediaSM = window.matchMedia('(min-width: 576px)');
     let mediaMD = window.matchMedia('(min-width: 768px)');
@@ -105,26 +105,29 @@ window.addEventListener('load', function() {
     }, 100)
 });
 
-function productPage() {
-    let prevButton = document.querySelector('.section-product__prev-btn');
-    let nextButton = document.querySelector('.section-product__next-btn');
-    let textes = new Swiper('.section-product__splider-text', {
+class productPage {
+    currentActiveIndex = 0;
+    maxIndex = null;
+    prevButton = document.querySelector('.section-product__prev-btn');
+    nextButton = document.querySelector('.section-product__next-btn');
+    stackMoves = [];
+    canRunMove = true;
+    textes = new Swiper('.section-product__splider-text', {
         slidesPerView: 1,
-        loop: true,
         spaceBetween: 60,
         speed: 700,
+        // loop: true,
         breakpoints: {
             768: {
                 allowTouchMove: false,
             }
         }
     })
-    let imges = new Swiper('.section-product__splider-img', {
+    imges = new Swiper('.section-product__splider-img', {
         slidesPerView: 1,
-        loop: true,
         spaceBetween: -100,
-        // allowTouchMove: false,
         speed: 700,
+        // loop: true,
         breakpoints: {
             420: {
                 spaceBetween: -200,
@@ -137,7 +140,7 @@ function productPage() {
             }
         }
     })
-    let brandsProduct = new Swiper('.swiper__brands-product', {
+    brandsProduct = new Swiper('.swiper__brands-product', {
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
@@ -167,88 +170,129 @@ function productPage() {
             }
         }
     });
+    requestForFrame =  window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function( /* function FrameRequestCallback */ callback, /* DOMElement Element */ element ) {
 
-    textes.on('slideChange', function(swiper) {
-        let differents = swiper.activeIndex - imges.activeIndex;
-        let direction = differents < 0 ? 1 : 0;
-        switch(differents) { 
-            case 0: direction = false; break;
-            case -1: direction = 1; break;
-            case 1: direction = 0; break;
-            default: direction = 2; break;
-        }
-        switch(direction) {
-            case false: break;
-            case 1: imges.slidePrev(700, false); break;
-            case 0: imges.slideNext(700, false); break;
-            case 2: imges.slideTo(swiper.activeIndex, 700, false); break;
-        }
-    })
-    imges.on('slideChange', function(swiper) {
-        let differents = swiper.activeIndex - textes.activeIndex;
-        let direction = differents < 0 ? 1 : 0;
-        switch(differents) { 
-            case 0: direction = false; break;
-            case -1: direction = 1; break;
-            case 1: direction = 0; break;
-            default: direction = 2; break;
-        }
-        switch(direction) {
-            case false: break;
-            case 1: textes.slidePrev(700, false); break;
-            case 0: textes.slideNext(700, false); break;
-            case 2: textes.slideTo(swiper.activeIndex, 700, false); break;
-        }
-    })
+            window.setTimeout( callback, 1000 / 60 );
 
-    if(imges.slides) {
-        let length = 0;
-        for (let index = 0; index < imges.slides.length; index++) {
-            if (imges.slides[index].classList.contains('swiper-slide')) length++;
-            if(length > 1) break;
+        };
+    cancelForFrame = window.cancelAnimationFrame ||
+        window.webkitCancelAnimationFrame ||
+        window.mozCancelAnimationFrame;
+
+    constructor() {
+        this.maxIndex = (this.imges && this.imges.slides && this.imges.slides.length - 1) || (this.textes && this.textes.slides && this.textes.slides.length - 1) || null;
+        if(this.imges.slides) {
+            let length = 0;
+            for (let index = 0; index < this.imges.slides.length; index++) {
+                if (this.imges.slides[index].classList.contains('swiper-slide')) length++;
+                if(length > 1) break;
+            }
+            if(this.prevButton && length > 1) {
+                this.prevButton.classList.add('js-ready');
+                this.prevButton.addEventListener('click', () => {
+                    this.setActiveIndex(this.currentActiveIndex - 1);
+                })
+            }
+            if(this.nextButton && length > 1) {
+                this.nextButton.classList.add('js-ready');
+                this.nextButton.addEventListener('click', () => {
+                    this.setActiveIndex(this.currentActiveIndex + 1);
+                })
+            }
         }
-        if(prevButton && length > 1) {
-            prevButton.classList.add('js-ready');
-            prevButton.addEventListener('click', function() {
-                imges.slidePrev();
-                textes.slidePrev();
-            })
+
+        this.textes.on('slideChange', (swiper) => {
+           this.setActiveIndex(swiper.activeIndex);
+        })
+        this.imges.on('slideChange', (swiper) => {
+            this.setActiveIndex(swiper.activeIndex);
+         })
+
+        let allImagesAllowToSlide = document.querySelectorAll('.swiper__brands-product-allow-click');
+        if(allImagesAllowToSlide) {
+            for (let index = 0; index < allImagesAllowToSlide.length; index++) {
+                allImagesAllowToSlide[index].addEventListener('click', function() {
+                    this.imges.slideTo(index + 2);
+                    this.textes.slideTo(index + 2);
+                    window.scrollTo({
+                        top: 100,
+                        behavior: "smooth"
+                    });
+                })
+            }
         }
-        if(nextButton && length > 1) {
-            nextButton.classList.add('js-ready');
-            nextButton.addEventListener('click', function() {
-                imges.slideNext();
-                textes.slideNext();
-            })
-        }
+        let allFirstSlidesImages = document.querySelectorAll('.swiper__brands-product-first-slide');
+        if(allFirstSlidesImages) {
+            for (let index = 0; index < allFirstSlidesImages.length; index++) {
+                allFirstSlidesImages[index].addEventListener('click', function() {
+                    this.imges.slideTo(1);
+                    this.textes.slideTo(1);
+                    window.scrollTo({
+                        top: 100,
+                        behavior: "smooth"
+                    });
+                })
+            }
+        } 
+        
+        this.runStack();
     }
 
-    let allImagesAllowToSlide = document.querySelectorAll('.swiper__brands-product-allow-click');
-    if(allImagesAllowToSlide) {
-        for (let index = 0; index < allImagesAllowToSlide.length; index++) {
-            allImagesAllowToSlide[index].addEventListener('click', function() {
-                imges.slideTo(index + 2);
-                textes.slideTo(index + 2);
-                window.scrollTo({
-                    top: 100,
-                    behavior: "smooth"
-                });
-            })
+    setActiveIndex = (index) => {
+        this.stackMoves.push(() => new Promise((resolve) => {
+            let result = index; let rewind = false;
+            if(this.maxIndex && result < 0) { result = this.maxIndex; rewind = true }
+            if(this.maxIndex && result > this.maxIndex) { result = 0; rewind = true }
+            let modeTransition;
+            if(rewind) {
+                if(result === 0) modeTransition = 'next';
+                if(result === this.maxIndex) modeTransition = 'prev';
+            } else {
+                let diff = result - this.currentActiveIndex;
+                switch(diff) {
+                    case 0:  modeTransition = 'none'; break;
+                    case 1:  modeTransition = 'next'; break;
+                    case -1: modeTransition = 'prev'; break;
+                    default: modeTransition = 'move'; break;
+                }
+            }
+            if(modeTransition === 'none') {
+                resolve(true);
+            } else {
+                if(this.imges.activeIndex !== result) this.moveSlide(this.imges, modeTransition, result);
+                if(this.textes.activeIndex !== result) this.moveSlide(this.textes, modeTransition, result);
+                this.currentActiveIndex = result;
+                resolve(true);
+            }
+        }))
+        
+    }
+    moveSlide = (slider, mode, index = null) => {
+        if(mode === 'none' || (mode === 'move' && index === null)) return;
+        switch(mode) {
+            case 'move': slider.slideTo(700, index); return;
+            case 'next': slider.slideNext(700); return;
+            case 'prev': slider.slidePrev(700); return;
         }
     }
-    let allFirstSlidesImages = document.querySelectorAll('.swiper__brands-product-first-slide');
-    if(allFirstSlidesImages) {
-        for (let index = 0; index < allFirstSlidesImages.length; index++) {
-            allFirstSlidesImages[index].addEventListener('click', function() {
-                imges.slideTo(1);
-                textes.slideTo(1);
-                window.scrollTo({
-                    top: 100,
-                    behavior: "smooth"
-                });
-            })
+    runStack = () => {
+        let loop = () => {
+            if(this.canRunMove === true && this.stackMoves[0]) {
+                this.canRunMove = false;
+                this.stackMoves[0].apply(this).then(res => {
+                    this.canRunMove = true;
+                })
+                this.stackMoves.shift();
+            }
+            window.requestAnimationFrame(loop);
         }
-    } 
+        window.requestAnimationFrame(loop);
+    }
 }
 
 function actionWithPointerLines() {

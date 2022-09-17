@@ -13,10 +13,8 @@
         <li><a href="{% if page.url != '/' and page.url != 'index.html' and page.url != '/index.html' %}{{ site.baseurl | default: '/index.html' }}{% endif %}#products">Продукция</a></li>
         <li><a href="{% if page.url != '/' and page.url != 'index.html' and page.url != '/index.html' %}{{ site.baseurl | default: '/index.html' }}{% endif %}#sertificats">Награды</a></li>
     </ul><button class="header__nav__exit"><span></span><span></span></button></nav>
-    <a class="header__btn accent-btn {% if site.data.infocompany.phoneText and site.data.infocompany.email %} accent-btn--big {% endif %}">
+    <a href="tel:+{{ site.data.infocompany.phone }}" class="header__btn accent-btn accent-btn--big ">
         {{ site.data.infocompany.phoneText }} 
-        {% if site.data.infocompany.phoneText and site.data.infocompany.email %} <br> {% endif %}
-        {{ site.data.infocompany.email }}
     </a>
     <button class="header__burger accent-btn accent-btn--circle">
         <span></span><span></span><span></span>
