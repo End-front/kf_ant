@@ -1,23 +1,23 @@
 'use strict';
 let header;
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     header = new Header;
     let headerBtnBurger = document.querySelector('.header__burger');
     let headerBack = document.querySelector('.header__nav-back');
     let headerExit = document.querySelector('.header__nav__exit');
-    if(headerBtnBurger) headerBtnBurger.addEventListener('click', header.openMenu)
-    if(headerBack) headerBack.addEventListener('click', header.closeMenu)
-    if(headerExit) headerExit.addEventListener('click', header.closeMenu);
-    const setPaddingToFirstSection = function() {
+    if (headerBtnBurger) headerBtnBurger.addEventListener('click', header.openMenu)
+    if (headerBack) headerBack.addEventListener('click', header.closeMenu)
+    if (headerExit) headerExit.addEventListener('click', header.closeMenu);
+    const setPaddingToFirstSection = function () {
         let firtsSection = document.querySelector('section');
         let padding = header.getHeight();
-        if(!firtsSection || padding === null) return;
-        firtsSection.style.paddingTop = Math.max(padding, 64) + 'px'; 
+        if (!firtsSection || padding === null) return;
+        firtsSection.style.paddingTop = Math.max(padding, 64) + 'px';
     }
     setPaddingToFirstSection();
     window.addEventListener('load', setPaddingToFirstSection);
     window.addEventListener('resize', setPaddingToFirstSection);
- 
+
     new Swiper('.swiper-sertificats', {
         navigation: {
             nextEl: '.swiper-button-next',
@@ -38,8 +38,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 spaceBetween: -230,
             }
         }
-    });  
-    
+    });
+
     new productPage();
 
     let mediaSM = window.matchMedia('(min-width: 576px)');
@@ -61,15 +61,15 @@ document.addEventListener('DOMContentLoaded', function() {
                         slidesPerView: 3,
                     }
                 }
-            }); 
+            });
         } else {
-            if(productInRow !== null) productInRow.destroy();
+            if (productInRow !== null) productInRow.destroy();
         }
     }
     handelOnChangeMedia(mediaMD);
     mediaMD.addEventListener('change', handelOnChangeMedia);
 });
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     actionWithPointerLines();
     window.addEventListener('resize', actionWithPointerLines);
 
@@ -77,12 +77,12 @@ window.addEventListener('load', function() {
     if (linksHeader) {
         for (let index = 0; index < linksHeader.length; index++) {
             const link = linksHeader[index];
-            link.addEventListener('click', function(e) {
+            link.addEventListener('click', function (e) {
                 e.preventDefault();
                 let href = this.getAttribute('href').substring(1);
                 const scrollTarget = document.getElementById(href);
                 const topOffset = 30;
-                if(!scrollTarget) return;
+                if (!scrollTarget) return;
                 const elementPosition = scrollTarget.getBoundingClientRect().top;
                 const offsetPosition = elementPosition - topOffset;
                 header.closeMenu();
@@ -93,13 +93,13 @@ window.addEventListener('load', function() {
             });
         }
     }
-    
 
-  
 
-    setTimeout(function() {
+
+
+    setTimeout(function () {
         let loader = document.querySelector('#preloader'); loader && loader.classList.add('is-loaded');
-        setTimeout(function() {
+        setTimeout(function () {
             document.documentElement.classList.add('js-init-animation');
         }, 500)
     }, 100)
@@ -152,32 +152,32 @@ class productPage {
         },
         spaceBetween: 30,
         pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
+            el: ".swiper-pagination",
+            clickable: true,
         },
         breakpoints: {
             576: {
                 slidesPerView: 2,
-                grid: { 
-                    rows : 2
+                grid: {
+                    rows: 2
                 }
             },
             992: {
                 slidesPerView: 3,
-                grid: { 
-                    rows : 2
+                grid: {
+                    rows: 2
                 }
             }
         }
     });
-    requestForFrame =  window.requestAnimationFrame ||
+    requestForFrame = window.requestAnimationFrame ||
         window.webkitRequestAnimationFrame ||
         window.mozRequestAnimationFrame ||
         window.oRequestAnimationFrame ||
         window.msRequestAnimationFrame ||
-        function( /* function FrameRequestCallback */ callback, /* DOMElement Element */ element ) {
+        function ( /* function FrameRequestCallback */ callback, /* DOMElement Element */ element) {
 
-            window.setTimeout( callback, 1000 / 60 );
+            window.setTimeout(callback, 1000 / 60);
 
         };
     cancelForFrame = window.cancelAnimationFrame ||
@@ -186,19 +186,19 @@ class productPage {
 
     constructor() {
         this.maxIndex = (this.imges && this.imges.slides && this.imges.slides.length - 1) || (this.textes && this.textes.slides && this.textes.slides.length - 1) || null;
-        if(this.imges.slides) {
+        if (this.imges.slides) {
             let length = 0;
             for (let index = 0; index < this.imges.slides.length; index++) {
                 if (this.imges.slides[index].classList.contains('swiper-slide')) length++;
-                if(length > 1) break;
+                if (length > 1) break;
             }
-            if(this.prevButton && length > 1) {
+            if (this.prevButton && length > 1) {
                 this.prevButton.classList.add('js-ready');
                 this.prevButton.addEventListener('click', () => {
                     this.setActiveIndex(this.currentActiveIndex - 1);
                 })
             }
-            if(this.nextButton && length > 1) {
+            if (this.nextButton && length > 1) {
                 this.nextButton.classList.add('js-ready');
                 this.nextButton.addEventListener('click', () => {
                     this.setActiveIndex(this.currentActiveIndex + 1);
@@ -207,18 +207,21 @@ class productPage {
         }
 
         this.textes.on('slideChange', (swiper) => {
-           this.setActiveIndex(swiper.activeIndex);
+            this.setActiveIndex(swiper.activeIndex);
         })
         this.imges.on('slideChange', (swiper) => {
             this.setActiveIndex(swiper.activeIndex);
-         })
+        })
+        let thisImg = this.imges;
+        let thisText = this.textes;
 
         let allImagesAllowToSlide = document.querySelectorAll('.swiper__brands-product-allow-click');
-        if(allImagesAllowToSlide) {
+        if (allImagesAllowToSlide) {
             for (let index = 0; index < allImagesAllowToSlide.length; index++) {
-                allImagesAllowToSlide[index].addEventListener('click', function() {
-                    this.imges.slideTo(index + 2);
-                    this.textes.slideTo(index + 2);
+
+                allImagesAllowToSlide[index].addEventListener('click', function () {
+                    thisImg.slideTo(index + 2);
+                    thisText.slideTo(index + 2);
                     window.scrollTo({
                         top: 100,
                         behavior: "smooth"
@@ -227,54 +230,54 @@ class productPage {
             }
         }
         let allFirstSlidesImages = document.querySelectorAll('.swiper__brands-product-first-slide');
-        if(allFirstSlidesImages) {
+        if (allFirstSlidesImages) {
             for (let index = 0; index < allFirstSlidesImages.length; index++) {
-                allFirstSlidesImages[index].addEventListener('click', function() {
-                    this.imges.slideTo(1);
-                    this.textes.slideTo(1);
+                allFirstSlidesImages[index].addEventListener('click', function () {
+                    thisImg.slideTo(1);
+                    thisText.slideTo(1);
                     window.scrollTo({
                         top: 100,
                         behavior: "smooth"
                     });
                 })
             }
-        } 
-        
+        }
+
         this.runStack();
     }
 
     setActiveIndex = (index) => {
         this.stackMoves.push(() => new Promise((resolve) => {
             let result = index; let rewind = false;
-            if(this.maxIndex && result < 0) { result = this.maxIndex; rewind = true }
-            if(this.maxIndex && result > this.maxIndex) { result = 0; rewind = true }
+            if (this.maxIndex && result < 0) { result = this.maxIndex; rewind = true }
+            if (this.maxIndex && result > this.maxIndex) { result = 0; rewind = true }
             let modeTransition;
-            if(rewind) {
-                if(result === 0) modeTransition = 'next';
-                if(result === this.maxIndex) modeTransition = 'prev';
+            if (rewind) {
+                if (result === 0) modeTransition = 'next';
+                if (result === this.maxIndex) modeTransition = 'prev';
             } else {
                 let diff = result - this.currentActiveIndex;
-                switch(diff) {
-                    case 0:  modeTransition = 'none'; break;
-                    case 1:  modeTransition = 'next'; break;
+                switch (diff) {
+                    case 0: modeTransition = 'none'; break;
+                    case 1: modeTransition = 'next'; break;
                     case -1: modeTransition = 'prev'; break;
                     default: modeTransition = 'move'; break;
                 }
             }
-            if(modeTransition === 'none') {
+            if (modeTransition === 'none') {
                 resolve(true);
             } else {
-                if(this.imges.activeIndex !== result) this.moveSlide(this.imges, modeTransition, result);
-                if(this.textes.activeIndex !== result) this.moveSlide(this.textes, modeTransition, result);
+                if (this.imges.activeIndex !== result) this.moveSlide(this.imges, modeTransition, result);
+                if (this.textes.activeIndex !== result) this.moveSlide(this.textes, modeTransition, result);
                 this.currentActiveIndex = result;
                 resolve(true);
             }
         }))
-        
+
     }
     moveSlide = (slider, mode, index = null) => {
-        if(mode === 'none' || (mode === 'move' && index === null)) return;
-        switch(mode) {
+        if (mode === 'none' || (mode === 'move' && index === null)) return;
+        switch (mode) {
             case 'move': slider.slideTo(700, index); return;
             case 'next': slider.slideNext(700); return;
             case 'prev': slider.slidePrev(700); return;
@@ -282,7 +285,7 @@ class productPage {
     }
     runStack = () => {
         let loop = () => {
-            if(this.canRunMove === true && this.stackMoves[0]) {
+            if (this.canRunMove === true && this.stackMoves[0]) {
                 this.canRunMove = false;
                 this.stackMoves[0].apply(this).then(res => {
                     this.canRunMove = true;
@@ -297,7 +300,7 @@ class productPage {
 
 function actionWithPointerLines() {
     let allPointerLines = document.querySelectorAll('.section-3__pointer-line');
-    if(!allPointerLines) return;
+    if (!allPointerLines) return;
 
     for (let index = 0; index < allPointerLines.length; index++) {
         const pointLine = allPointerLines[index];
@@ -307,13 +310,13 @@ function actionWithPointerLines() {
 
         const parentText = pointLine.parentElement.querySelector('.section-3__text');
         const nextText = pointLine.parentElement.nextElementSibling && pointLine.parentElement.nextElementSibling.querySelector('.section-3__text');
-        if(parentText && nextText) {
+        if (parentText && nextText) {
             const react1 = parentText.getBoundingClientRect(),
-                  react2 = nextText.getBoundingClientRect(),
-                  reactLine = pointLine.getBoundingClientRect();
+                react2 = nextText.getBoundingClientRect(),
+                reactLine = pointLine.getBoundingClientRect();
             const height = react2.top - (react1.top + parentText.offsetHeight),
-                  top = (react1.top + parentText.offsetHeight) - reactLine.top;
-                  
+                top = (react1.top + parentText.offsetHeight) - reactLine.top;
+
             pointLine.style.height = height + 'px';
             pointLine.style.top = top + 'px';
         } else {
@@ -325,14 +328,14 @@ function actionWithPointerLines() {
 class Header {
     mainParent = document.querySelector('.header');
 
-    openMenu = function() {
+    openMenu = function () {
         document.documentElement.classList.add('js-open-menu');
     }
-    closeMenu = function() {
+    closeMenu = function () {
         document.documentElement.classList.remove('js-open-menu');
     }
-    getHeight = function() {
-        if(!this.mainParent) return null;
+    getHeight = function () {
+        if (!this.mainParent) return null;
         return this.mainParent.offsetHeight;
     }
 }
