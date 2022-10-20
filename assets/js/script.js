@@ -220,8 +220,8 @@ class productPage {
             for (let index = 0; index < allImagesAllowToSlide.length; index++) {
 
                 allImagesAllowToSlide[index].addEventListener('click', function () {
-                    thisImg.slideTo(index + 2);
-                    thisText.slideTo(index + 2);
+                    thisImg.slideTo(index + 1);
+                    thisText.slideTo(index + 1);
                     window.scrollTo({
                         top: 100,
                         behavior: "smooth"
