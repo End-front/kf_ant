@@ -55,9 +55,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 spaceBetween: 30,
                 slidesPerView: 2,
-                loop: true,
                 breakpoints: {
+
                     1440: {
+                        loop: true,
                         slidesPerView: 3,
                     }
                 }
